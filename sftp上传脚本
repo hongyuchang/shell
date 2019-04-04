@@ -21,7 +21,7 @@ HOST=a.b.c.d
 USER=username
 PASS=password
 
-echo "tarting to sftp…"
+echo "starting"
 lftp -u ${USER},${PASS} sftp://${HOST} <<EOF
 cd upload
 put filename
