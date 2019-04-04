@@ -1,0 +1,31 @@
+sftp自动上传脚本
+    借助lftp工具实现自动上传
+    lftp使用方法：
+    [root@master ~]# lftp --help
+用法: lftp [OPTS] <site>
+`lftp' 是在 rc 文件执行后 lftp 执行的第一个命令
+ -f <file>           执行文件中的命令后退出
+ -c <cmd>            执行命令后退出
+ --help              显示帮助信息后退出
+ --version           显示 lftp 版本后退出
+ 其他的选项同 `open' 命令
+ -e <cmd>            在选择后执行命令
+ -u <user>[,<pass>]  使用指定的用户名/口令进行验证
+ -p <port>           连接指定的端口
+ <site>              主机名, URL 或书签的名字
+ 
+ 
+ #!/bin/sh
+
+HOST=a.b.c.d
+USER=username
+PASS=password
+
+echo "tarting to sftp…"
+lftp -u ${USER},${PASS} sftp://${HOST} <<EOF
+cd upload
+put filename
+bye
+EOF
+
+ 
