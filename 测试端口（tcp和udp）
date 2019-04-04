@@ -1,0 +1,25 @@
+测试端口是否可用
+tcp服务的端口，使用telnet工具测试，因telnet走的是tcp协议
+telnet ip port
+ 
+例：测试192.168.21.131的22端口是否可用
+[root@master ~]# telnet 192.168.21.131 22
+Trying 192.168.21.131...
+Connected to 192.168.21.131.
+Escape character is '^]'.
+SSH-2.0-OpenSSH_7.4
+
+udp服务的端口，使用nc工具测试
+
+例:测试192.168.21.131的68端口号
+[root@master ~]# nc -vuz 192.168.21.131 68
+Ncat: Version 7.50 ( https://nmap.org/ncat )
+Ncat: Connected to 192.168.21.131:68.
+Ncat: UDP packet sent successfully
+Ncat: 1 bytes sent, 0 bytes received in 2.01 seconds.
+
+
+如果端口不通，显示如下：
+Ncat: Version 7.50 ( https://nmap.org/ncat )
+Ncat: Connected to 192.168.21.131:100.
+Ncat: Connection refused.
